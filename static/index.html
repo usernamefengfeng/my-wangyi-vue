@@ -5,13 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- 移动端适配 -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
-    <link rel="stylesheet" href="./css/reset.css">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1356964_d9xu2dg2v8.css">
+    <link rel="stylesheet" href="/public/css/reset.css">
+    <!-- <link rel="stylesheet" href="./css/index.css"> -->
     <title>my-wangyi-vue</title>
-    <style>
-      
-    </style>
     <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
     <script>
       /* 解决点击响应演示300ms问题 */
@@ -28,24 +25,25 @@
       !(function () {
         let aNodes = document.querySelectorAll('a');
         let i = 0;
-        for (i = 0; i < aNodes.length; i++) {
+        for (; i < aNodes.length; i++) {
           aNodes[i].addEventListener('touchstart', function () {
             window.location = this.href;
           });
         }
       })()
       //rem适配
-      // !(function () {
-      //   let width = document.documentElement.clientWidth;
-      //   let styleNode = document.createElement('style');
-      //   styleNode.innerHTML = 'html{font-size: ' + width / 10 + 'px !important;}';
-      //   document.head.appendChild(styleNode);
-      // })();
+      !(function () {
+        let width = document.documentElement.clientWidth;
+        let styleNode = document.createElement('style');
+        styleNode.innerHTML = 'html{font-size: ' + width / 10 + 'px !important;}';
+        document.head.appendChild(styleNode);
+      })();
     </script>
 
   </head>
   <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <div id="app">
+
+    </div>
   </body>
 </html>

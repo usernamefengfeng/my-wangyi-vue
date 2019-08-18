@@ -1,28 +1,28 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="appContainer">
+    <router-view/>
+    <Footer v-show="$route.meta.showFooter"/>
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
+<script type="text/ecmascript-6">
+import Home from './pages/Home/Home'
+import CategoryList from './pages/CategoryList/CategoryList'
+import SeeGoods from './pages/SeeGoods/SeeGoods'
+import ShopCart from './pages/ShopCart/ShopCart'
+import Profile from './pages/Profile/Profile'
+  export default {
+    components: {
+      Home,
+      CategoryList,
+      SeeGoods,
+      ShopCart,
+      Profile
+    }
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="stylus" rel="stylesheet/stylus">
+  .appContainer
+    height 100%
 </style>

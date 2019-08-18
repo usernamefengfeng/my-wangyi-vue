@@ -1,0 +1,36 @@
+#app {
+  width: 100%;
+  height: 100%;
+}
+#app .g-wrap .home {
+  width: 100%;
+  height: 100%;
+}
+#app .g-wrap .home .headerWraper .header {
+  width: 100%;
+  height: 148px;
+}
+#app .g-wrap .home .headerWraper .header .header-title {
+  position: relative;
+  width: 100%;
+  height: 88px;
+}
+#app .g-wrap .home .headerWraper .header .header-title .logo {
+  width: 138px;
+  height: 40px;
+  text-align: center;
+  position: relative;
+  margin: 10px;
+}
+#app .g-wrap .home .headerWraper .header .header-title .logo img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80px;
+  height: 20px;
+}
+#app .g-wrap .home .headerWraper .header .header-title .title-search-icon {
+  position: absolute;
+  left: 60px;
+  top: 10px;
+}
