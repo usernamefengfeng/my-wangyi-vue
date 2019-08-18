@@ -1,12 +1,12 @@
 <template>
   <header class="header_title">
-    <div class="header-search" @click="$router.push('/search')">
+    <div class="header-search" @click="$router.push('/searchGoods')">
       <img :src="'http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-a90bdaae6b.png'" alt="logo">
       <div class="search_box">
         <img :src="'http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-553dba3aff.png'" alt="放大镜">
         <span class="placeholder">搜索商品,共21612款好物</span>
       </div>
-      <span class="login_btn">登录</span>
+      <span class="login_btn" @click.stop="$router.push('/profile')">登录</span>
     </div>
     <div class="header_nav">
       <div class="header_nav_left">
@@ -23,7 +23,10 @@
         </ul>
       </div>
       <div class="right_arrow" @click="isOpen = !isOpen">
-        <img :src="'http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/arrow-down-3-799ded53ea.png'" alt="展开">
+        <!-- <i :class="{is_open: isOpen}" class="iconfont icon-jiantou2"></i> -->
+        <i class="iconfont icon-jiantou2" v-if="!isOpen"></i>
+        <i class="iconfont icon-jiantoukongup" v-else></i>
+        <!-- <img :src="'http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/arrow-down-3-799ded53ea.png'" alt="展开"> -->
       </div>
       <div class="all_nav" v-show="isOpen">
         <p>全部频道</p>
@@ -44,7 +47,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  // import Bscroll from 'better-scroll'
+  import Bscroll from 'better-scroll'
   export default {
     data() {
       return {
@@ -53,9 +56,9 @@
       }
     },
 
-    /* mounted() {
+    mounted() {
       this.$nextTick(() => {
-        if (!this.Bscroll) {
+        if (!this.bscroll) {
           this.bscroll = new Bscroll('.header_nav_left',{
             click: true,
             scrollX: true
@@ -64,7 +67,7 @@
           this.bscroll.refresh()
         }
       })
-    }, */
+    },
 
     methods: {
       addActive (event) {
@@ -80,6 +83,8 @@
     position fixed
     width 100%
     height 72px
+    background #fff
+    z-index 999
     .header-search
       display flex
       padding 8px 15px
@@ -120,8 +125,8 @@
     .header_nav
       position relative
       padding-top 10px
-      z-index: 2
-      background: #fff
+      z-index 8
+      background #fff
       margin-top -5px
       .header_nav_left
         padding-right 10px
@@ -142,13 +147,12 @@
       .right_arrow
         position absolute
         right 18px
-        bottom 157px
-        img 
-          width 15px
-          height 15px
+        bottom 0
+        z-index 10
+        i 
+          font-size 20px
       .all_nav
         position: relative
-        z-index: 2
         background: #fff
         margin-top: -14px
         p

@@ -7,7 +7,9 @@ import App from './App.vue'
 import router from './router/index'
 
 import Footer from './components/Footer/Footer.vue'
+import Split from './components/Split/Split.vue'
 Vue.component('Footer',Footer)
+Vue.component('Split',Split)
 
 Vue.config.productionTip = false
 
