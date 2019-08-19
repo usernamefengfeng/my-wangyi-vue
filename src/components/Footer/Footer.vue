@@ -68,7 +68,7 @@
       justify-content space-around
       color #ccc
       &.active
-        color red
+        color #b4282d
       .footer-icon
         position absolute
         left -25px

@@ -30,12 +30,12 @@
             <i class="iconfont icon-duihao"></i>
             <span>我同意<a href="javascript:;">《服务条款》</a>和<a href="javascript:;">《网易隐私政策》</a></span>
           </div>
-          <div class="back_btn">其他登录方式
+          <div class="back_btn" @click="$router.replace('/profile')">其他登录方式
             <i class="iconfont icon-a3right"></i>
           </div>
         </div>
         <div class="email-way">
-
+          
         </div>
       </div>
     </div>

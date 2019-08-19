@@ -7,8 +7,8 @@
         <span class="find-zhen">甄选家</span>
       </h1>
       <div class="search-shopCar">
-        <i class="iconfont icon-fangdajing"></i>
-        <i class="iconfont icon-gouwuche"></i>
+        <i class="iconfont icon-fangdajing" @click="$router.replace('/searchGoods')"></i>
+        <i class="iconfont icon-gouwuche" @click="$router.replace('/shopCart')"></i>
       </div>
     </div>
     <div class="find_tab">

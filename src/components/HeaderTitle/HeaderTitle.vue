@@ -1,8 +1,8 @@
 <template>
   <header class="header_title">
-    <div class="header-search" @click="$router.push('/searchGoods')">
+    <div class="header-search">
       <img :src="'http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-a90bdaae6b.png'" alt="logo">
-      <div class="search_box">
+      <div class="search_box" @click="$router.push('/searchGoods')">
         <img :src="'http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-553dba3aff.png'" alt="放大镜">
         <span class="placeholder">搜索商品,共21612款好物</span>
       </div>
@@ -58,13 +58,20 @@
 
     mounted() {
       this.$nextTick(() => {
-        if (!this.bscroll) {
-          this.bscroll = new Bscroll('.header_nav_left',{
+        if (!this.scroll) {
+          /* 
+            单例对象: 单一的实例对象--只创建一次
+              1. 创建前: 判断对象不存在才去创建 
+              2. 创建后: 保存创建的对象
+          */
+          console.log('111')
+          this.scroll = new Bscroll('.header_nav_left',{
             click: true,
             scrollX: true
+            
           })
         } else {
-          this.bscroll.refresh()
+          this.scroll.refresh()
         }
       })
     },
@@ -128,12 +135,17 @@
       z-index 8
       background #fff
       margin-top -5px
+      width 100%
+      height 14px
       .header_nav_left
         padding-right 10px
-        width 80%
+        width 75%
         height 100%
+        overflow hidden
         .nav_list
-          display: flex;
+          display: flex
+          z-index 10
+          width 600px
           white-space nowrap
           background-color: #fff;
           overflow hidden
@@ -148,12 +160,15 @@
         position absolute
         right 18px
         bottom 0
-        z-index 10
-        i 
+        background #fff
+        z-index 12
+        .iconfont 
           font-size 20px
       .all_nav
         position: relative
         background: #fff
+        width 100%
+        height 170px
         margin-top: -14px
         p
           height: 14px
