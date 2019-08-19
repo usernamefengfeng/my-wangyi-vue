@@ -52,6 +52,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   .scene_light
+    margin 20px 0
     ul
       display flex
       flex-wrap wrap

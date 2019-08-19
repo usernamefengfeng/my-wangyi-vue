@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="footer_nav">
     <li :class="{active: $route.path === '/home'}" @click="goto('/home')">
       <div class="footer-icon">
         <i class="iconfont icon-home_normal"></i>
@@ -23,7 +23,7 @@
     </li>
     <li :class="{active: $route.path === '/shopCart'}" @click="goto('/shopCart')">
       <div class="footer-icon">
-        <i class="iconfont icon-qicheqianlian-"></i>
+        <i class="iconfont icon-gouwuche-copy"></i>
         <!-- <img src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/tabBar-s43a0dc8a7d-de25ef8e19.png" alt="icon"> -->
         <span>购物车</span>
       </div>
@@ -50,13 +50,14 @@
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   @import "../../common/stylus/mixins.styl"
-  ul
+  .footer_nav
     position fixed
     bottom 0px
     left 0px
+    box-sizing border-box
     display flex
     justify-content space-around
-    height 100px
+    height 47px
     width 100%
     font-size 24px
     background-color #fff

@@ -2,6 +2,7 @@
   入口文件
 */
 import Vue from 'vue'
+import 'lib-flexible/flexible'  //移动端适配
 
 import App from './App.vue'
 import router from './router/index'

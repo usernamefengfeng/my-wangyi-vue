@@ -28,6 +28,14 @@
         <NewCouple/>
         <Split/>
         <CategoryModule/>
+        <Split/>
+        <LimitShop/>
+        <Split/>
+        <Recommend/>
+        <Split/>
+        <CrowdFunding/>
+        <GoodList/>
+        <HomeFooter/>
       </div>
     </div>
   </div>
@@ -39,6 +47,11 @@
   import Policy from './components/Policy/Policy'  //主导航区
   import NewCouple from './components/NewCouple/NewCouple'  //新人专享礼
   import CategoryModule from './components/CategoryModule/CategoryModule'  //商品模块
+  import LimitShop from './components/LimitShop/LimitShop'  //限时购
+  import Recommend from './components/Recommend/Recommend'  //人气推荐
+  import CrowdFunding from './components/CrowdFunding/CrowdFunding' //众筹
+  import GoodList from './components/GoodList/GoodList'  //物品列表
+  import HomeFooter from './components/HomeFooter/HomeFooter'  //home底部
   export default {
     components: {
       HeaderTitle,
@@ -46,13 +59,18 @@
       Policy,
       NewCouple,
       CategoryModule,
+      LimitShop,
+      Recommend,
+      CrowdFunding,
+      GoodList,
+      HomeFooter,
     }
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
   .home-container
-    padding-bottom 100px
+    padding-bottom 47px
     .home-main
       .home-content
         .servicePolicy
