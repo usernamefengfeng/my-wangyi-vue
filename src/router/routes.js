@@ -8,6 +8,7 @@ import SeeGoods from '../pages/SeeGoods/SeeGoods.vue'
 import ShopCart from '../pages/ShopCart/ShopCart.vue'
 import Profile from '../pages/Profile/Profile.vue'
 import SearchGoods from '../pages/Home/components/SearchGoods/SearchGoods.vue'
+import Login from '../pages/Login/Login.vue'
 
 
 //二级路由
@@ -55,6 +56,10 @@ export default [
   {
     path: '/searchGoods',
     component: SearchGoods,
+  },
+  {
+    path: '/login',
+    component: Login,
   },
   {
     path: '/',
