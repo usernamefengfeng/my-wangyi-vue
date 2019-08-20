@@ -1,7 +1,7 @@
 <template>
   <div class="shopcar_box clearfix">
     <div class="top_search">
-      <label class="input_label">
+      <div class="input_label">
         <div class="scale_img">
           <img
             src="//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-2fb94833aa.png"
@@ -10,8 +10,8 @@
         </div>
         <!---->
         <input type="text" placeholder="美妆护肤 女王专享7折起" />
-      </label>
-      <span class="right_back">取消</span>
+      </div>
+      <span class="right_back" @click="$router.back()">取消</span>
       <!---->
     </div>
     <div class="bottom_title">热门搜索</div>
@@ -63,6 +63,7 @@ export default {};
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   .shopcar_box
     width 100%
+    height 500px
     .top_search
       position relative
       width 345px
@@ -105,7 +106,7 @@ export default {};
           border-radius 50%
           line-height: 14px;
           text-align: center;
-          font-size: 14px;
+          font-size: 12px;
           color #f2f2f2
           background-color: #888
         .scale_img

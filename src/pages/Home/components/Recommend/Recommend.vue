@@ -5,67 +5,19 @@
       <span class="popular_more">更多 ></span>
     </div>
     <ul class="popular_goods">
-      <li>
+      <li v-for="(item, index) in homeData.popularItemList" :key="index">
         <img
-          src="http://yanxuan.nosdn.127.net/e52cb767feb1578fbb7f2b77d70267c8.png"
+          :src="item.primaryPicUrl"
           alt="人气推荐"
-          data-src="http://yanxuan.nosdn.127.net/e52cb767feb1578fbb7f2b77d70267c8.png"
+          :data-src="item.primaryPicUrl"
           lazy="loaded"
         />
         <div class="popular_info">
-          <span class="popular_name">21s素暖轻磨毛四件套</span>
+          <span class="popular_name">{{item.name}}</span>
           <br />
-          <span class="popular_desc">厚实粗犷肌理感，越睡越舒适</span>
+          <span class="popular_desc">{{item.simpleDesc}}</span>
           <br />
-          <span class="popular_price">¥399</span>
-        </div>
-      </li>
-      <li>
-        <img
-          src="http://yanxuan.nosdn.127.net/489d9ee22b95c14044592dcc43ae3aa2.png"
-          alt="人气推荐"
-          data-src="http://yanxuan.nosdn.127.net/489d9ee22b95c14044592dcc43ae3aa2.png"
-          lazy="loaded"
-        />
-        <div class="popular_info">
-          <span class="popular_name">
-            30包
-            谷风一木软抽面巾纸囤...
-          </span>
-          <!---->
-          <!---->
-          <!---->
-          <span class="popular_price">¥75</span>
-        </div>
-      </li>
-      <li>
-        <img
-          src="http://yanxuan.nosdn.127.net/a7aad09d3b57ad24586cd3581f8d748c.jpg"
-          alt="人气推荐"
-          data-src="http://yanxuan.nosdn.127.net/a7aad09d3b57ad24586cd3581f8d748c.jpg"
-          lazy="loaded"
-        />
-        <div class="popular_info">
-          <span class="popular_name">男式轻薄无缝羽绒服</span>
-          <!---->
-          <!---->
-          <!---->
-          <span class="popular_price">¥239</span>
-        </div>
-      </li>
-      <li>
-        <img
-          src="http://yanxuan.nosdn.127.net/f2b80ed18c71a06ca7b38bb26cf2d781.png"
-          alt="人气推荐"
-          data-src="http://yanxuan.nosdn.127.net/f2b80ed18c71a06ca7b38bb26cf2d781.png"
-          lazy="loaded"
-        />
-        <div class="popular_info">
-          <span class="popular_name">真皮毛女童系结雪地靴</span>
-          <!---->
-          <!---->
-          <!---->
-          <span class="popular_price">¥244</span>
+          <span class="popular_price">¥{{item.retailPrice}}</span>
         </div>
       </li>
     </ul>
@@ -73,12 +25,20 @@
 </template>
 
 <script type="text/ecmascript-6">
-export default {};
+import {mapState} from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      homeData: state => state.home.homeData
+    })
+  },
+};
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   .popular_box
     width 96%
+    padding-bottom 54px
     .popular_header
       display flex
       align-items center

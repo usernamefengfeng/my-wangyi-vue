@@ -4,43 +4,24 @@
       <span class="z_chou_title">众筹</span>
       <span class="z_chou_more">更多 ></span>
     </div>
-    <ul class="z_chou_goods">
-      <li>
+    <ul class="z_chou_goods" v-if="homeData">
+      <li v-for="(item, index) in homeData.zhongChouList" :key="index">
         <img
-          src="https://yanxuan.nosdn.127.net/f0007d7b330b5ed3e88f43f27f9f565a.png"
+          :src="item.picUrl"
           alt="新品"
-          data-src="https://yanxuan.nosdn.127.net/f0007d7b330b5ed3e88f43f27f9f565a.png"
+          :data-src="item.picUrl"
           lazy="loaded"
         />
         <div class="z_chou_info">
-          <div class="z_chou_title">易武贡茶 迷你普洱茶饼100克</div>
-          <div class="z_chou_price">¥198起</div>
+          <div class="z_chou_title">{{item.name}}</div>
+          <div class="z_chou_price">{{item.showRetailPrice}}</div>
           <div class="z_chou_p_box">
             <div class="z_chou_progress">
               <div class="bg" style="width: 216%;"></div>
             </div>
-            <div class="z_chou_percent">216%</div>
+            <div class="z_chou_percent">{{item.progress}}%</div>
           </div>
-          <div class="z_chou_supportNum">217人已支持</div>
-        </div>
-      </li>
-      <li>
-        <img
-          src="https://yanxuan.nosdn.127.net/4ffd108225357b1ce5d95c3dcd1eb2a4.png"
-          alt="新品"
-          data-src="https://yanxuan.nosdn.127.net/4ffd108225357b1ce5d95c3dcd1eb2a4.png"
-          lazy="loaded"
-        />
-        <div class="z_chou_info">
-          <div class="z_chou_title">RevoMax经典热量瓶</div>
-          <div class="z_chou_price">¥169起</div>
-          <div class="z_chou_p_box">
-            <div class="z_chou_progress">
-              <div class="bg" style="width: 33%;"></div>
-            </div>
-            <div class="z_chou_percent">33%</div>
-          </div>
-          <div class="z_chou_supportNum">62人已支持</div>
+          <div class="z_chou_supportNum">{{item.supportNum}}</div>
         </div>
       </li>
     </ul>
@@ -48,7 +29,14 @@
 </template>
 
 <script type="text/ecmascript-6">
-export default {};
+import {mapState} from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      homeData: state => state.home.homeData
+    })
+  },
+};
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>

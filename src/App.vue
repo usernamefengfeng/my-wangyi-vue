@@ -18,7 +18,11 @@ import Profile from './pages/Profile/Profile'
       SeeGoods,
       ShopCart,
       Profile
-    }
+    },
+
+    mounted() {
+      this.$store.dispatch('getHomeData')
+    },
   }
 </script>
 

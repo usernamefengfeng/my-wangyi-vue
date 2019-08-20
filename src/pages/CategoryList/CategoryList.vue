@@ -2,27 +2,17 @@
   <div class="category-modules">
     <div class="cate-header">
       <div class="cate-input">
-        <div class="input-content">
+        <div class="input-content" @click="$router.replace('/searchGoods')">
           <i class="iconfont icon-fangdajing1"></i>
           <span class="input-text">搜索商品,共21525款商品</span>
         </div>
       </div>
     </div>
     <div class="cat-content">
-      <div class="left-nav">
+      <div class="left-nav" ref="leftNav">
         <ul>
-          <li class="nav-item"><a href="javascript:;">推荐专区</a></li>
-          <li class="nav-item"><a href="javascript:;">推荐专区</a></li>
-          <li class="nav-item"><a href="javascript:;">推荐专区</a></li>
-          <li class="nav-item"><a href="javascript:;">推荐专区</a></li>
-          <li class="nav-item"><a href="javascript:;">推荐专区</a></li>
-          <li class="nav-item"><a href="javascript:;">推荐专区</a></li>
-          <li class="nav-item"><a href="javascript:;">推荐专区</a></li>
-          <li class="nav-item"><a href="javascript:;">推荐专区</a></li>
-          <li class="nav-item"><a href="javascript:;">推荐专区</a></li>
-          <li class="nav-item"><a href="javascript:;">推荐专区</a></li>
-          <li class="nav-item"><a href="javascript:;">推荐专区</a></li>
-          <li class="nav-item"><a href="javascript:;">推荐专区</a></li>
+          <li class="nav-item" v-for="(item, index) in navItems" :key="index"
+              @click="goTo(index)"><a  :class="{active:currentIndex === index}" href="javascript:;">{{item}}</a></li>
         </ul>
       </div>
       <div class="right-content">
@@ -95,7 +85,33 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Bscroll from 'better-scroll'
   export default {
+    data() {
+      return {
+        navItems: ['推荐专区','夏凉专区','爆品专区','新品专区','居家生活','服饰鞋包','美食酒水','个户清洁','母婴亲子','运动旅行','数码家电','全球特色'],
+        currentIndex: 0
+      }
+    },
+
+    methods: {
+      goTo (index) {
+        this.currentIndex = index
+      }
+    },
+
+    mounted() {
+      this.$nextTick(() => {
+        if (!this.scroll) {
+          this.scroll = new Bscroll(this.$refs.leftNav,{
+            click: true,
+            scrollY: true
+          })
+        } else {
+          this.scroll.refresh()
+        }
+      })
+    },
   }
 </script>
 
@@ -132,18 +148,22 @@
     .cat-content
       width 100%
       height 574px
+      border-bottom 1px solid #ccc
       .left-nav
         float left
         width 81px
-        height 100%
+        height 574px
         background #fff
+        overflow hidden
         ul
-          box-sizing border-box
+          width 100%
+          padding-top 25px
+          height 575px
           .nav-item
             width 100%
             height 25px
             text-align center
-            margin 20px 0
+            padding 10px 0
             a
               white-space: nowrap
               font-size: 14px
@@ -151,6 +171,8 @@
               overflow: hidden
               display block
               color #333
+              &.active
+                color #B4282D
       .right-content
         img 
           width 264px

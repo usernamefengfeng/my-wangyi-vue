@@ -64,7 +64,7 @@
               1. 创建前: 判断对象不存在才去创建 
               2. 创建后: 保存创建的对象
           */
-          console.log('111')
+          //console.log('111')
           this.scroll = new Bscroll('.header_nav_left',{
             click: true,
             scrollX: true

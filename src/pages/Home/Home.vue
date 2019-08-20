@@ -52,6 +52,8 @@
   import CrowdFunding from './components/CrowdFunding/CrowdFunding' //众筹
   import GoodList from './components/GoodList/GoodList'  //物品列表
   import HomeFooter from './components/HomeFooter/HomeFooter'  //home底部
+
+  import {mapState} from 'vuex'
   export default {
     components: {
       HeaderTitle,
@@ -64,7 +66,21 @@
       CrowdFunding,
       GoodList,
       HomeFooter,
-    }
+    },
+
+    methods: {
+      
+    },
+
+    computed: {
+      ...mapState({
+        homeData: state => state.home.homeData
+      })
+    },
+
+    mounted() {
+      
+    },
   }
 </script>
 

@@ -13,77 +13,17 @@
       </div>
       <span class="flash_more">更多 ></span>
     </div>
-    <ul class="flash_goods">
-      <li>
+    <ul class="flash_goods" v-if="homeData.flashSaleModule">
+      <li v-for="(item, index) in homeData.flashSaleModule.itemList" :key="index">
         <img
-          src="http://yanxuan.nosdn.127.net/ff90462e4d7c7edd01a25f8932e1800f.png"
+          :src="item.picUrl"
           alt="picUrl"
-          data-src="http://yanxuan.nosdn.127.net/ff90462e4d7c7edd01a25f8932e1800f.png"
+          :data-src="item.picUrl"
           lazy="loaded"
         />
         <div class="bottom_info">
-          <span class="flash_price">¥289</span>
-          <span class="old_price">¥349</span>
-        </div>
-      </li>
-      <li>
-        <img
-          src="http://yanxuan.nosdn.127.net/fe06530dd35ec5062c1ecaf82d4812d6.png"
-          alt="picUrl"
-          data-src="http://yanxuan.nosdn.127.net/fe06530dd35ec5062c1ecaf82d4812d6.png"
-          lazy="loaded"
-        />
-        <div class="bottom_info">
-          <span class="flash_price">¥125</span>
-          <span class="old_price">¥179</span>
-        </div>
-      </li>
-      <li>
-        <img
-          src="http://yanxuan.nosdn.127.net/de34d4d8407709f2edd88597d66fcfcb.png"
-          alt="picUrl"
-          data-src="http://yanxuan.nosdn.127.net/de34d4d8407709f2edd88597d66fcfcb.png"
-          lazy="loaded"
-        />
-        <div class="bottom_info">
-          <span class="flash_price">¥584</span>
-          <span class="old_price">¥899</span>
-        </div>
-      </li>
-      <li>
-        <img
-          src="http://yanxuan.nosdn.127.net/da9c2255909d0d1fe5cabff6d93c03db.png"
-          alt="picUrl"
-          data-src="http://yanxuan.nosdn.127.net/da9c2255909d0d1fe5cabff6d93c03db.png"
-          lazy="loaded"
-        />
-        <div class="bottom_info">
-          <span class="flash_price">¥2079</span>
-          <span class="old_price">¥2599</span>
-        </div>
-      </li>
-      <li>
-        <img
-          src="http://yanxuan.nosdn.127.net/8b7bde0b395e2bda54505cf4c3b7880b.png"
-          alt="picUrl"
-          data-src="http://yanxuan.nosdn.127.net/8b7bde0b395e2bda54505cf4c3b7880b.png"
-          lazy="loaded"
-        />
-        <div class="bottom_info">
-          <span class="flash_price">¥29.9</span>
-          <span class="old_price">¥35.8</span>
-        </div>
-      </li>
-      <li>
-        <img
-          src="http://yanxuan.nosdn.127.net/2adbaae8403ac4dcac56ebf2ff1a5116.png"
-          alt="picUrl"
-          data-src="http://yanxuan.nosdn.127.net/2adbaae8403ac4dcac56ebf2ff1a5116.png"
-          lazy="loaded"
-        />
-        <div class="bottom_info">
-          <span class="flash_price">¥87.2</span>
-          <span class="old_price">¥109</span>
+          <span class="flash_price">¥{{item.activityPrice}}</span>
+          <span class="old_price">¥{{item.originPrice}}</span>
         </div>
       </li>
     </ul>
@@ -91,7 +31,14 @@
 </template>
 
 <script type="text/ecmascript-6">
-export default {};
+import {mapState} from 'vuex'
+export default {
+  computed: {
+    ...mapState({
+      homeData:state => state.home.homeData
+    })
+  },
+};
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>

@@ -13,21 +13,42 @@
     </div>
     <div class="find_tab">
       <ul>
-        <li class>盛夏特别版</li>
-        <li class="active">推荐</li>
-        <li class>好货内部价</li>
-        <li class>回购榜</li>
-        <li class>晒单</li>
-        <li class>开发者日记</li>
-        <li class>达人</li>
-        <li class>HOME</li>
+        <li :class="{active: currentIndex === index}" 
+            v-for="(item, index) in liArr" :key="index" @click="addTo(index)">{{item}}</li>
       </ul>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-export default {};
+import Bscroll from 'better-scroll'
+export default {
+  data() {
+    return {
+      liArr: ['盛夏特别版','推荐','好货内部价','回购榜','晒单','开发者日记','达人','HOME'],
+      currentIndex: 0
+    }
+  },
+
+  methods: {
+    addTo (index) {
+      this.currentIndex = index
+    }
+  },
+
+  mounted() {
+    this.$nextTick(() => {
+      if (!this.scroll) {
+        this.scroll = new Bscroll('.find_tab',{
+          click: true,
+          scrollX: true
+        })
+      } else {
+        this.scroll.refresh()
+      }
+    })
+  },
+};
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
@@ -81,23 +102,27 @@ export default {};
       top 44px
       left 0
       width 100%
-      height 37px
+      height 42px
       overflow hidden
       font-size 14px
       border-top 1px solid #ddd
       background-color: #fafafa
       >ul
-        width 100%
         height 100%
+        margin-left 12px
+        width 600px
         display flex
         justify-content space-around
         >li
-          height 100%
+          height 36px
+          width 78px
           box-sizing border-box
-          padding 0 5px
+          margin-right 2px
+          padding 2px 0
           line-height 37px
+          text-align center
           color #666
           &.active
-            color $themeColor
-            border-bottom 3px solid $themeColor
+            color #B4282D
+            border-bottom 1px solid #B4282D
 </style>
