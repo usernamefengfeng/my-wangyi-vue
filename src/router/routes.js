@@ -36,6 +36,13 @@ export default [
     }
   },
   {
+    path: '/categoryList?:categoryId',
+    component: CategoryList,
+    meta: {
+      showFooter: true
+    }
+  },
+  {
     path: '/seeGoods',
     component: SeeGoods,
     meta: {

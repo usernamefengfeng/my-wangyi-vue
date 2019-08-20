@@ -6,6 +6,16 @@ import ajax from './ajax'
 
 const BASE = '/api'  //跨域代理
 
-export const reqCategorys = () => ajax.get('/categoryList')
+//商品分类接口
+export const reqCategorys = () => ajax.get('/categorys')  //mock数据
 
-export const reqHomeData = () => ajax.get('/home')
+//home接口
+export const reqHomeData = () => ajax.get('/home')       //mock数据
+
+//搜索关键字的 接口
+export const reqInitSearch = () => ajax.post(`${BASE}/xhr/search/searchAutoComplete.json`)       //搜索关键字
+
+//搜索结果
+export const reqSearchResult = (keyword) => ajax.post(`${BASE}/xhr/search/searchAutoComplete.json`,{
+  keyword
+})

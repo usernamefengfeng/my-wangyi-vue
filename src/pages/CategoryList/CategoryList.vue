@@ -11,74 +11,22 @@
     <div class="cat-content">
       <div class="left-nav" ref="leftNav">
         <ul>
-          <li class="nav-item" v-for="(item, index) in navItems" :key="index"
-              @click="goTo(index)"><a  :class="{active:currentIndex === index}" href="javascript:;">{{item}}</a></li>
+          <li class="nav-item" v-for="(item, index) in categorysData.categoryL1List" :key="index"
+              @click="goTo(index,'/categoryList?categoryId='+index)"><a :class="{active:currentIndex === index}" href="javascript:;">{{item.name}}</a></li>
         </ul>
       </div>
       <div class="right-content">
-        <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&amp;thumbnail=0x196" alt="img">
-        <ul class="right-ul">
-          <li class="right-item">
-            <div class="img-item">
-              <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&amp;thumbnail=0x196" alt="">
-            </div>
-            <span>员工精选好货</span>
-          </li>
-          <li class="right-item">
-            <div class="img-item">
-              <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&amp;thumbnail=0x196" alt="">
-            </div>
-            <span>员工精选好货</span>
-          </li>
-          <li class="right-item">
-            <div class="img-item">
-              <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&amp;thumbnail=0x196" alt="">
-            </div>
-            <span>员工精选好货</span>
-          </li>
-          <li class="right-item">
-            <div class="img-item">
-              <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&amp;thumbnail=0x196" alt="">
-            </div>
-            <span>员工精选好货</span>
-          </li>
-          <li class="right-item">
-            <div class="img-item">
-              <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&amp;thumbnail=0x196" alt="">
-            </div>
-            <span>员工精选好货</span>
-          </li>
-          <li class="right-item">
-            <div class="img-item">
-              <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&amp;thumbnail=0x196" alt="">
-            </div>
-            <span>员工精选好货</span>
-          </li>
-          <li class="right-item">
-            <div class="img-item">
-              <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&amp;thumbnail=0x196" alt="">
-            </div>
-            <span>员工精选好货</span>
-          </li>
-          <li class="right-item">
-            <div class="img-item">
-              <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&amp;thumbnail=0x196" alt="">
-            </div>
-            <span>员工精选好货</span>
-          </li>
-          <li class="right-item">
-            <div class="img-item">
-              <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&amp;thumbnail=0x196" alt="">
-            </div>
-            <span>员工精选好货</span>
-          </li>
-          <li class="right-item">
-            <div class="img-item">
-              <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&amp;thumbnail=0x196" alt="">
-            </div>
-            <span>员工精选好货</span>
-          </li>
-        </ul>
+        <div class="right-container">
+          <img src="https://yanxuan.nosdn.127.net/5b4ca33a0205482398006405c1db15e8.jpg?imageView&amp;thumbnail=0x196" alt="img">
+          <ul class="right-ul">
+            <li class="right-item" v-for="(item, index) in categorysData.categoryL2List" :key="index">
+              <div class="img-item">
+                <img :src="item.bannerUrl" alt="">
+              </div>
+              <span>{{item.name}}</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -86,21 +34,30 @@
 
 <script type="text/ecmascript-6">
   import Bscroll from 'better-scroll'
+  import { mapState } from 'vuex';
   export default {
     data() {
       return {
-        navItems: ['推荐专区','夏凉专区','爆品专区','新品专区','居家生活','服饰鞋包','美食酒水','个户清洁','母婴亲子','运动旅行','数码家电','全球特色'],
+        // navItems: ['推荐专区','夏凉专区','爆品专区','新品专区','居家生活','服饰鞋包','美食酒水','个户清洁','母婴亲子','运动旅行','数码家电','全球特色'],
         currentIndex: 0
       }
     },
 
+    computed: {
+      ...mapState({
+        categorysData: state => state.categorys.categorysData
+      })
+    },
+
     methods: {
-      goTo (index) {
+      goTo (index,path) {
         this.currentIndex = index
+        this.$router.push(path)
       }
     },
 
     mounted() {
+      this.$store.dispatch('getCategorysData')
       this.$nextTick(() => {
         if (!this.scroll) {
           this.scroll = new Bscroll(this.$refs.leftNav,{
@@ -174,29 +131,32 @@
               &.active
                 color #B4282D
       .right-content
-        img 
-          width 264px
-          height 96px
-          margin 15px
-        .right-ul
-          width 264px
-          height 324px
-          display flex
-          flex-wrap wrap
-          margin-left 100px
-          .right-item
-            width 72px
-            height 108px
-            margin-right 16px
-            .img-item
-              img
-                width 50px
-                height 50px
-                border-radius 50%
-            span 
-              display block
+        width 375px
+        height 574px
+        .right-container
+          width 100%
+          img 
+            width 264px
+            height 96px
+            margin 15px
+          .right-ul
+            width 264px
+            display flex
+            flex-wrap wrap
+            margin-left 90px
+            .right-item
               width 72px
-              height 36px
-              text-align center
-              font-size 12px
+              height 108px
+              margin-right 12px
+              .img-item
+                img
+                  width 72px
+                  height 72px
+                  border-radius 50%
+              span 
+                display block
+                width 72px
+                height 36px
+                text-align center
+                font-size 12px
 </style>

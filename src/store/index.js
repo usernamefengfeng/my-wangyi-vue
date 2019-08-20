@@ -9,6 +9,7 @@ import actions from './actions'
 import getters from './getters'
 
 import home from './modules/home/index'
+import categorys from './modules/categorys/index'
 
 //声明使用vue插件
 Vue.use(Vuex)
@@ -19,5 +20,6 @@ export default new Vuex.Store({
   getters,
   modules: {  //vuex多模块编程
     home,
+    categorys,
   }
 })

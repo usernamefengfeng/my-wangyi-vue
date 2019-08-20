@@ -1,69 +1,80 @@
 <template>
-  <div class="shopcar_box clearfix">
+  <div class="shopcar_box">
     <div class="top_search">
-      <div class="input_label">
+      <label class="input_label">
         <div class="scale_img">
-          <img
-            src="//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-2fb94833aa.png"
-            alt="搜索"
-          />
+          <img src="//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-2fb94833aa.png" alt="搜索" />
         </div>
-        <!---->
-        <input type="text" placeholder="美妆护肤 女王专享7折起" />
-      </div>
+        <div class="clear_img" v-if="userInput" @click="userInput=''">X</div>
+        <input @keyup="searchTo" v-model="userInput" type="text" :placeholder="'美妆护肤 女王专享7折起'" />
+      </label>
       <span class="right_back" @click="$router.back()">取消</span>
-      <!---->
+  
+      <div class="result_show" v-if="userInput">
+        <ul>
+          <li v-for="(item, index) in searchResult" :key="index">
+            {{item}}
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="bottom_title">热门搜索</div>
     <ul>
-      <li>
-        <a href="javascript:" class>爆款 行李箱</a>
-      </li>
-      <li>
-        <a href="javascript:" class>香氛牙膏 谈吐芳香</a>
-      </li>
-      <li>
-        <a href="javascript:" class>轻弹云朵拖鞋9.9元</a>
-      </li>
-      <li>
-        <a href="javascript:" class>中秋月饼 上新热卖</a>
-      </li>
-      <li>
-        <a href="javascript:" class>酸梅汤 吃货推荐</a>
-      </li>
-      <li>
-        <a href="javascript:" class>内裤</a>
-      </li>
-      <li>
-        <a href="javascript:" class="active">韩国造 睡眠喷雾</a>
-      </li>
-      <li>
-        <a href="javascript:" class>行李箱</a>
-      </li>
-      <li>
-        <a href="javascript:" class>男士内裤</a>
-      </li>
-      <li>
-        <a href="javascript:" class>女鞋</a>
-      </li>
-      <li>
-        <a href="javascript:" class>水杯</a>
-      </li>
-      <li>
-        <a href="javascript:" class>黄桃罐头</a>
+      <li v-for="(keyWord, index) in keywords" :key="index">
+        <a :class="{active: curIndex===index-3}" href="javascript:">
+          {{keyWord}}
+        </a>
       </li>
     </ul>
   </div>
 </template>
 
-<script type="text/ecmascript-6">
-export default {};
+<script>
+  import {mapState} from "vuex"
+  export default {
+    data (){
+      return {
+        curIndex: 3,
+        userInput: "",
+        timerId: null
+      }
+    },
+    computed: {
+      ...mapState({
+        searchData: state=>state.home.searchData,
+        searchResult: state=>state.home.searchResult
+      }),
+      keywords () {
+        let arrs = []
+        if(this.searchData.hotKeywordVOList){
+          arrs = this.searchData.hotKeywordVOList.reduce((arr, next)=>{
+            const word = next.keyword;
+            arr.push && arr.push(word)
+            return arr
+          }, [])
+        }
+        return arrs
+      }
+    },
+    methods: {
+      searchTo () {
+        clearTimeout(this.timerId)
+        this.timerId = setTimeout(async ()=>{
+          await this.$store.dispatch('getSearchResult', this.userInput)
+          console.log('111')
+        }, 300)
+      }
+    },
+    async mounted () {
+      await this.$store.dispatch("getSearchData")
+    }
+  }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus" scoped>
+<style  lang="stylus" rel="stylesheet/stylus" scoped>
   .shopcar_box
     width 100%
-    height 500px
+    height 600px
     .top_search
       position relative
       width 345px
@@ -77,8 +88,8 @@ export default {};
         left 0
         bottom 0
         z-index 1
-        width 750px
-        min-height 1258px
+        width 375px
+        min-height 629px
         box-sizing border-box
         transform translate(-15px ,100%)
         background-color: #f4f4f4
@@ -106,7 +117,7 @@ export default {};
           border-radius 50%
           line-height: 14px;
           text-align: center;
-          font-size: 12px;
+          font-size: 14px;
           color #f2f2f2
           background-color: #888
         .scale_img
@@ -122,7 +133,7 @@ export default {};
             height 14px
         >input
           display block
-          width 277px
+          width 276px
           height 100%
           padding-left 30px
           outline none
@@ -144,7 +155,7 @@ export default {};
       display flex
       flex-wrap wrap
       >li
-        margin 0 12px 12px 0
+        margin 0 16px 16px 0
         a
           margin-right 16px
           padding 4px 7px
