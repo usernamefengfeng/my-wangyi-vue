@@ -6,14 +6,14 @@
           <img src="//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-2fb94833aa.png" alt="搜索" />
         </div>
         <div class="clear_img" v-if="userInput" @click="userInput=''">X</div>
-        <input @keyup="searchTo" v-model="userInput" type="text" :placeholder="'美妆护肤 女王专享7折起'" />
+        <input @keyup.enter="searchTo" v-model="userInput" type="text" :placeholder="'你的幸福从这里开始'" />
       </label>
       <span class="right_back" @click="$router.back()">取消</span>
   
       <div class="result_show" v-if="userInput">
         <ul>
-          <li v-for="(item, index) in searchResult" :key="index">
-            {{item}}
+          <li v-for="(item, index) in searchResult.goods" :key="index">
+            {{item.name}}
           </li>
         </ul>
       </div>

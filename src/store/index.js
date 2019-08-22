@@ -10,6 +10,7 @@ import getters from './getters'
 
 import home from './modules/home/index'
 import categorys from './modules/categorys/index'
+import user from './modules/user'
 
 //声明使用vue插件
 Vue.use(Vuex)
@@ -21,5 +22,6 @@ export default new Vuex.Store({
   modules: {  //vuex多模块编程
     home,
     categorys,
+    user,
   }
 })

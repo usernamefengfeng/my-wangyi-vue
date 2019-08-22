@@ -13,11 +13,11 @@
         <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="netease">
       </div>
       <div class="profile-login">
-        <div class="login-btn-phone" @click="$router.replace('/login')">
+        <div class="login-btn-phone" @click="toLogin">
           <i class="iconfont icon-dianhua"></i>
           <span class="login-phone">手机号快捷登录</span>
         </div>
-        <div class="login-btn-email" @click="$router.replace('/login')">
+        <div class="login-btn-email" @click="$router.replace('/loginEmail')">
           <i class="iconfont icon-youxiang2"></i>
           <span class="login-email">邮箱账号登录</span>
         </div>
@@ -42,6 +42,17 @@
 
 <script type="text/ecmascript-6">
   export default {
+    methods: {
+      toLogin () {
+        let user = localStorage.getItem('user_key')
+        if (user) {
+          this.$router.replace('/home')
+          //console.log(JSON.parse(localStorage.getItem(user)))
+        } else {
+          this.$router.replace('/loginPhone')
+        }
+      }
+    },
   }
 </script>
 

@@ -1,0 +1,114 @@
+{
+    "goods":[
+        {
+            "id":3507205,
+            "listPicUrl":"https://yanxuan-item.nosdn.127.net/43c5e85a86b77f159a65a6eeacdb5dfe.png",
+            "name":"轻商务 防泼水自动折叠晴雨伞",
+            "seoTitle":"",
+            "simpleDesc":"自动开合，晴雨两用，抗风防晒",
+            "primaryPicUrl":"https://yanxuan-item.nosdn.127.net/703ef5ec7f94391de73e5124494c471d.png",
+            "primarySkuId":3715130,
+            "retailPrice":53.1,
+            "counterPrice":59.00,
+            "status":2,
+            "rank":0,
+            "soldOut":false,
+            "underShelf":false,
+            "updateTime":1565750508933,
+            "itemDetail":null,
+            "specialSale":"超低钜惠"
+        },
+        {
+            "id":3507205,
+            "listPicUrl":"https://yanxuan-item.nosdn.127.net/43c5e85a86b77f159a65a6eeacdb5dfe.png",
+            "name":"轻商务 防泼水自动折叠晴雨伞",
+            "seoTitle":"",
+            "simpleDesc":"自动开合，晴雨两用，抗风防晒",
+            "primaryPicUrl":"https://yanxuan-item.nosdn.127.net/703ef5ec7f94391de73e5124494c471d.png",
+            "primarySkuId":3715130,
+            "retailPrice":53.1,
+            "counterPrice":59.00,
+            "status":2,
+            "rank":0,
+            "soldOut":false,
+            "underShelf":false,
+            "updateTime":1565750508933,
+            "itemDetail":null,
+            "specialSale":"清仓处理"
+
+        },
+        {
+            "id":3444033,
+            "listPicUrl":"https://yanxuan-item.nosdn.127.net/63ee0c84cef92a2f32c21e4cc403bcac.png",
+            "name":"女式浪漫下摆连衣裙",
+            "seoTitle":"",
+            "simpleDesc":"细腻舒适，甜美初见",
+            "primaryPicUrl":"https://yanxuan-item.nosdn.127.net/92a874443e153b533aaa10201332de75.png",
+            "primarySkuId":3674069,
+            "retailPrice":209,
+            "counterPrice":349.00,
+            "status":2,
+            "rank":0,
+            "soldOut":false,
+            "underShelf":false,
+            "updateTime":1564469490622,
+            "itemDetail":null
+        },
+        {
+            "id":3507205,
+            "listPicUrl":"https://yanxuan-item.nosdn.127.net/43c5e85a86b77f159a65a6eeacdb5dfe.png",
+            "name":"轻商务 防泼水自动折叠晴雨伞",
+            "seoTitle":"",
+            "simpleDesc":"自动开合，晴雨两用，抗风防晒",
+            "primaryPicUrl":"https://yanxuan-item.nosdn.127.net/703ef5ec7f94391de73e5124494c471d.png",
+            "primarySkuId":3715130,
+            "retailPrice":53.1,
+            "counterPrice":59.00,
+            "status":2,
+            "rank":0,
+            "soldOut":false,
+            "underShelf":false,
+            "updateTime":1565750508933,
+            "itemDetail":null
+        },
+        {
+            "id":3507205,
+            "listPicUrl":"https://yanxuan-item.nosdn.127.net/43c5e85a86b77f159a65a6eeacdb5dfe.png",
+            "name":"轻商务 防泼水自动折叠晴雨伞",
+            "seoTitle":"",
+            "simpleDesc":"自动开合，晴雨两用，抗风防晒",
+            "primaryPicUrl":"https://yanxuan-item.nosdn.127.net/703ef5ec7f94391de73e5124494c471d.png",
+            "primarySkuId":3715130,
+            "retailPrice":53.1,
+            "counterPrice":59.00,
+            "status":2,
+            "rank":0,
+            "soldOut":false,
+            "underShelf":false,
+            "updateTime":1565750508933,
+            "itemDetail":null,
+            "specialSale":"一件5折"
+        },
+        {
+            "id":3444033,
+            "listPicUrl":"https://yanxuan-item.nosdn.127.net/63ee0c84cef92a2f32c21e4cc403bcac.png",
+            "name":"女式浪漫下摆连衣裙",
+            "seoTitle":"",
+            "simpleDesc":"细腻舒适，甜美初见",
+            "primaryPicUrl":"https://yanxuan-item.nosdn.127.net/92a874443e153b533aaa10201332de75.png",
+            "primarySkuId":3674069,
+            "retailPrice":209,
+            "counterPrice":349.00,
+            "status":2,
+            "rank":0,
+            "soldOut":false,
+            "underShelf":false,
+            "updateTime":1564469490622,
+            "itemDetail":null
+        }
+            
+    ]
+}
+
+   
+

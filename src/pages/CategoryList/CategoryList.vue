@@ -12,7 +12,9 @@
       <div class="left-nav" ref="leftNav">
         <ul>
           <li class="nav-item" v-for="(item, index) in categorysData.categoryL1List" :key="index"
-              @click="goTo(index,'/categoryList?categoryId='+index)"><a :class="{active:currentIndex === index}" href="javascript:;">{{item.name}}</a></li>
+              @click="goTo(index,'/categoryList?categoryId='+index)">
+              <router-link :class="{active:currentIndex === index}" to="'/categoryList?categoryId='+index">{{item.name}}</router-link>
+          </li>
         </ul>
       </div>
       <div class="right-content">
@@ -21,7 +23,7 @@
           <ul class="right-ul">
             <li class="right-item" v-for="(item, index) in categorysData.categoryL2List" :key="index">
               <div class="img-item">
-                <img :src="item.bannerUrl" alt="">
+                <img :src="item.bannerUrl" alt="img" v-lazy="item.bannerUrl">
               </div>
               <span>{{item.name}}</span>
             </li>

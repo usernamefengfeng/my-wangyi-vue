@@ -3,6 +3,8 @@
 */
 import Vue from 'vue'
 import 'lib-flexible/flexible'  //移动端适配
+import { Button } from 'mint-ui'
+import VueLazyload from 'vue-lazyload'
 
 import App from './App.vue'
 import router from './router/index' //路由器
@@ -14,9 +16,17 @@ import './mock/mock_serve'  //mock接口
 import Footer from './components/Footer/Footer.vue'
 import Split from './components/Split/Split.vue'
 
+import './validate'  //login界面登录验证
+
+import loading from './common/images/loading.gif'   //图片懒加载
+Vue.use(VueLazyload,{
+  loading,
+})
+
 //注册全局组件
 Vue.component('Footer',Footer)
 Vue.component('Split',Split)
+Vue.component(Button.name,Button)
 
 Vue.config.productionTip = false
 

@@ -19,7 +19,8 @@
             <h2>今日特价</h2>
           </div>
           <div class="imgWrap">
-            <img src="https://yanxuan-item.nosdn.127.net/81e3c70911ba7b4b3a5a6e40be3f2b27.png"/>
+            <img src="https://yanxuan-item.nosdn.127.net/81e3c70911ba7b4b3a5a6e40be3f2b27.png"
+                v-lazy="'https://yanxuan-item.nosdn.127.net/81e3c70911ba7b4b3a5a6e40be3f2b27.png'"/>
           </div>
           <div class="scroil">
             <span>￥24.6</span>
@@ -32,7 +33,8 @@
             <h2>1元起包邮</h2>
           </div>
           <div class="imgWrap">
-            <img src="https://yanxuan-item.nosdn.127.net/58b7b4a5277dddbfd9b99b07f38b6c20.png"/>
+            <img src="https://yanxuan-item.nosdn.127.net/58b7b4a5277dddbfd9b99b07f38b6c20.png"
+                v-lazy="'https://yanxuan-item.nosdn.127.net/58b7b4a5277dddbfd9b99b07f38b6c20.png'"/>
           </div>
           <div class="scroil">
             <span>￥24.6</span>

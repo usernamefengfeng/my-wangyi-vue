@@ -10,7 +10,7 @@
           :src="item.primaryPicUrl"
           alt="人气推荐"
           :data-src="item.primaryPicUrl"
-          lazy="loaded"
+          v-lazy="item.primaryPicUrl"
         />
         <div class="popular_info">
           <span class="popular_name">{{item.name}}</span>

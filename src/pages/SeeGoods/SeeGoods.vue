@@ -3,8 +3,8 @@
     <div class="find-title">
       <i class="iconfont icon-shouye" @click="$router.replace('/home')"></i>
       <h1>
-        <span class="find-text">发现</span>
-        <span class="find-zhen">甄选家</span>
+        <span class="find-text" @click="isShow=true;$router.replace('/seeGoods/findGoods')">发现</span>
+        <span class="find-zhen" @click="isShow=false;$router.replace('/seeGoods/zhenXuan')">甄选家</span>
       </h1>
       <div class="search-shopCar">
         <i class="iconfont icon-fangdajing" @click="$router.replace('/searchGoods')"></i>
@@ -17,16 +17,20 @@
             v-for="(item, index) in liArr" :key="index" @click="addTo(index)">{{item}}</li>
       </ul>
     </div>
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+// import FindGoods from './pages/FindGoods/FindGoods'
+// import ZhenXuan from './pages/ZhenXuan/ZhenXuan'
 import Bscroll from 'better-scroll'
 export default {
   data() {
     return {
       liArr: ['盛夏特别版','推荐','好货内部价','回购榜','晒单','开发者日记','达人','HOME'],
-      currentIndex: 0
+      currentIndex: 0,
+      isShow: true,   //路由组件FindGoods/ZhenXuan是否显示标识
     }
   },
 
@@ -48,10 +52,15 @@ export default {
       }
     })
   },
+
+  // components: {
+  //   FindGoods,
+  //   ZhenXuan
+  // }
 };
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus" scoped>
+<style lang="stylus" rel="stylesheet/stylus">
   .find-module
     .find-title
       position fixed

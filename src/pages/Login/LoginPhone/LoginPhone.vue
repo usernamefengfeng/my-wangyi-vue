@@ -4,8 +4,8 @@
       <i class="iconfont icon-shouye" @click="$router.replace('/home')"></i>
       <h1>网易严选</h1>
       <div class="search-shopCar">
-        <i class="iconfont icon-fangdajing"></i>
-        <i class="iconfont icon-gouwuche"></i>
+        <i class="iconfont icon-fangdajing" @click="$router.replace('/searchGoods')"></i>
+        <i class="iconfont icon-gouwuche" @click="$router.replace('/shopCart')"></i>
       </div>
     </div>
     <div class="profile-content">
@@ -15,27 +15,29 @@
       <div class="login-way">
         <div class="phone-way">
           <div class="input_phone">
-            <input type="text" placeholder="请输入手机号">
+            <input type="text" maxlength="11" placeholder="请输入手机号" v-model="phone"
+                    name="phone" v-validate="'required|mobile'">
           </div>
           <div class="input_code">
-            <input type="text" placeholder="请输入短信验证码">
-            <div class="get_password">获取验证码</div>
+            <input type="text" maxlength="6" placeholder="请输入短信验证码" v-model="code"
+                      name="code" v-validate="{required: true, regex: /^\d{6}$/}">
+            <div class="get_password" :disabled="!isRightPhone || computeTime > 0"
+              @click.prevent="sendCode">
+              {{computeTime > 0 ? `验证码已发送(${computeTime}s)` : '获取验证码'}}
+              </div>
           </div>
           <div class="login_help">
             <span>遇到问题?</span> 
             <span class="span-pwd">使用密码验证登录</span>
           </div>
-          <div class="login_btn">登录</div>
+          <button class="login_btn" @click="login">登录</button>
           <div class="help-clause">
-            <i class="iconfont icon-duihao"></i>
+            <i class="iconfont icon-duihao" @click="isred = !isred" :class="{active: isred}"></i>
             <span>我同意<a href="javascript:;">《服务条款》</a>和<a href="javascript:;">《网易隐私政策》</a></span>
           </div>
           <div class="back_btn" @click="$router.replace('/profile')">其他登录方式
             <i class="iconfont icon-a3right"></i>
           </div>
-        </div>
-        <div class="email-way">
-          
         </div>
       </div>
     </div>
@@ -43,7 +45,113 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {Toast,MessageBox} from 'mint-ui'
+  import {reqSendCode,reqSmsLogin} from '../../../api/index'
   export default {
+    data() {
+      return {
+        isred:false,
+        phone: '',
+        code: '',
+        computeTime: 0,    //短信倒计时   显示==> computeTime>0 隐藏==> computeTime===0
+      }
+    },
+
+    computed: {
+      //验证是否是一个正确的手机号
+      isRightPhone () {
+        return /^1[3456789]\d{9}$/.test(this.phone)   //test-----正则的测试方法
+        // return true
+      }
+    },
+
+    methods: {
+      /* 
+        点击发送验证码
+      */
+      async sendCode () {
+        //先定义computeTime的最大延迟时间
+        this.computeTime = 10
+        //定义一个循环定时器，短信发送时间倒计时
+        const intervalId = setInterval(() => {
+          //当到达0时，停止定时器
+          if (this.computeTime === 0) {
+            clearInterval(intervalId)
+          } else {
+            this.computeTime--
+          }
+        }, 1000);
+
+        /* 
+        发ajax请求 ==> 发送验证码短信
+        */
+        const result = await reqSendCode(this.phone)
+        // console.log(result)
+        if (result.code === 0) {  //成功
+          Toast('短信已发送')
+        } else {  //失败
+          //停止计时
+          this.computeTime = 0
+          MessageBox.alert(result.msg)
+        }
+      },
+
+      //点击登录
+      async login () {
+        let result
+        const {phone,code} = this
+        const names = [phone,code]
+        result = await reqSmsLogin(phone,code)
+        const success = await this.$validator.validateAll(names)
+        if (success) {
+          Toast({
+            message: '操作成功',
+          });
+        }
+
+        if (result.code === 0) {
+          const user = result.data
+          //将user保存到state中
+          this.$store.dispatch('saveUser',user)
+          // console.log(user)
+          // console.log('111')
+          //跳转到home界面
+          this.$router.replace('/home')
+        } else {
+          MessageBox.alert(result.msg)
+        }
+      }
+    },
+
+    /* watch: {
+      user: {
+        deep: true,
+        handler (newUser,oldUser) {
+          if (/^1[3456789]\d{9}$/.test(newUser.phone)) {
+            
+            Toast('验证通过')
+          }else {
+            Toast('请输入正确手机号')
+          }
+
+          if (/^[0-9]{6}$/.test(newUser.code)) {
+            this.user.code = ''
+            Toast('密码验证通过')
+          }else {
+            Toast('请输入正确密码')
+          }
+        }
+      }
+    }, */
+
+    /* methods: {
+      login (path) {
+        if (this.user.phone === '' && this.user.code === '') {
+          Toast('登录成功')
+          this.$router.replace(path)
+        }
+      }
+    }, */
   }
 </script>
 
@@ -162,6 +270,7 @@
             color #fff
             border-radius 3px
             text-align center
+            border 0 solid #DD1A21
           .help-clause
             width 375px
             height 20px
@@ -171,6 +280,8 @@
             .iconfont 
               margin-right 5px
               font-size 18px
+              &.active
+                color red
           .back_btn
             width 375px
             height 20px

@@ -6,7 +6,7 @@ import {
 
 import {
   reqHomeData,
-  reqInitSearch,
+  reqSearchKeyWords,
   reqSearchResult
 } from '../../../api/index'
 
@@ -23,10 +23,10 @@ export default{
 
   //搜索关键字
   async getSearchData ({commit}) {
-    const result = await reqInitSearch()
+    const result = await reqSearchKeyWords()
     const searchData = result.data
 
-    if (result.code === '200') {
+    if (result.code === 0) {
       commit(GET_SEARCH_DATA,{searchData})
     }
   },
@@ -36,7 +36,7 @@ export default{
     const result = await reqSearchResult(keyword)
     const searchResult = result.data
 
-    if (result.code === '200') {
+    if (result.code === 0) {
       commit(GET_SEARCH_RESULT,{searchResult})
     }
   }

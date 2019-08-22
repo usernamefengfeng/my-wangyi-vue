@@ -19,7 +19,7 @@
           :src="item.picUrl"
           alt="picUrl"
           :data-src="item.picUrl"
-          lazy="loaded"
+          v-lazy="item.picUrl"
         />
         <div class="bottom_info">
           <span class="flash_price">¥{{item.activityPrice}}</span>

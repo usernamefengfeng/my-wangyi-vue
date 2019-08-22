@@ -3,7 +3,7 @@
     <ul v-if="homeData.kingKongModule">
       <li v-for="(item, index) in homeData.kingKongModule.kingKongList" :key="index">
         <a href="javascript:">
-          <img :src="item.picUrl" alt="居家" lazy="loaded">
+          <img :src="item.picUrl" alt="居家" v-lazy="item.picUrl">
           <p>{{item.text}}</p>
         </a>
       </li>
