@@ -4,7 +4,9 @@
       <ul class="tab-list">
         <li class="tab-item" v-for="(item, index) in liArr" :key="index"
             :class="{active: currentIndex === index}" @click="addTo(index,`/seeGoods/findGoods/${index}`)">
-          <router-link :to="`/seeGoods/findGoods/${index}`">{{item}}</router-link>
+          <span>{{item}}</span>
+          <!-- 声明式导航 -->
+          <!-- <router-link :to="`/seeGoods/findGoods/${index}`">{{item}}</router-link> -->
         </li>
       </ul>
     </div>

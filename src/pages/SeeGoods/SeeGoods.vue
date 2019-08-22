@@ -7,8 +7,8 @@
             <i class="iconfont icon-shouye" @click="$router.replace('/home')"></i>
           </div>
           <h1>
-            <span class="find-text" @click="$router.replace('/seeGoods/findGoods/0')">发现</span>
-            <span class="find-zhen" @click="$router.replace('/seeGoods/zhenXuan')">甄选家</span>
+            <span class="find-text" :class="{active: $route.path==='/seeGoods/findGoods/0'}" @click="$router.replace('/seeGoods/findGoods/0')">发现</span>
+            <span class="find-zhen" :class="{active: $route.path==='/seeGoods/zhenXuan'}" @click="$router.replace('/seeGoods/zhenXuan')">甄选家</span>
           </h1>
           <div class="search-shopCar">
             <i class="iconfont icon-fangdajing" @click="$router.replace('/searchGoods')"></i>
@@ -79,15 +79,20 @@ export default {
             color #7F7F7F
             z-index 1
             .find-text
-              font-size 20px
-              color #b4282d
-              font-weight bold
               padding 0 8px
               vertical-align middle
+              &.active
+                font-size 20px
+                color #b4282d
+                font-weight bold
             .find-zhen
               font-size 14px
               padding 0 8px
               vertical-align middle
+              &.active
+                font-size 20px
+                color #b4282d
+                font-weight bold
           .search-shopCar
             position absolute
             right 0
