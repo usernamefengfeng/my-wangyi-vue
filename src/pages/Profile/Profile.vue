@@ -97,7 +97,7 @@
       padding-top 44px
       background-color #f4f4f4
       width 100%
-      height 86.8%
+      height 580px
       .login-img
         position absolute
         top 0

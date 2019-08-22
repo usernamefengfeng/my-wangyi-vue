@@ -1,6 +1,6 @@
 <template>
   <div class="findGoods">
-    <div class="header-tab">
+    <div class="header-tab" ref="headerTab">
       <ul class="tab-list">
         <li class="tab-item" v-for="(item, index) in liArr" :key="index"
             :class="{active: currentIndex === index}" @click="addTo(index,`/seeGoods/findGoods/${index}`)">
@@ -10,7 +10,7 @@
         </li>
       </ul>
     </div>
-    <div class="min-container">
+    <div class="min-container" ref="minContainer">
       <div class="max-content">
         <!-- <SwiperImg/> -->
         <SwiperImg v-if="this.currentIndex===0"/>
@@ -50,9 +50,20 @@
     mounted() {
       this.$nextTick(() => {
         if (!this.scroll) {
-          this.scroll = new Bscroll('.header-tab',{
+          this.scroll = new Bscroll(this.$refs.headerTab,{
             click: true,
             scrollX: true
+          })
+        } else {
+          this.scroll.refresh()
+        }
+      })
+
+      this.$nextTick(() => {
+        if (!this.scroll && this.currentIndex || this.currentIndex===0) {
+          this.scroll = new Bscroll(this.$refs.minContainer,{
+            click: true,
+            scrollY: true
           })
         } else {
           this.scroll.refresh()
@@ -71,7 +82,6 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .findGoods
     width 100%
-    height 100%
     box-sizing border-box
     .header-tab
       width 100%

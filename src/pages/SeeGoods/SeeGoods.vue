@@ -45,7 +45,6 @@ export default {
     width 375px
     height 100%
     .find-container
-      height 620px
       .find-title
         width 100%
         height 50px
