@@ -45,7 +45,7 @@
     methods: {
       toLogin () {
         let user = localStorage.getItem('user_key')
-        if (user) {
+        if (user && user!=={}) {
           this.$router.replace('/home')
           //console.log(JSON.parse(localStorage.getItem(user)))
         } else {

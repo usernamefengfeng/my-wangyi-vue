@@ -13,7 +13,8 @@
         <ul>
           <li class="nav-item" v-for="(item, index) in categorysData.categoryL1List" :key="index"
               @click="goTo(index,'/categoryList?categoryId='+index)">
-              <router-link :class="{active:currentIndex === index}" to="'/categoryList?categoryId='+index">{{item.name}}</router-link>
+              <router-link :class="{active:currentIndex === index}" :to="'/categoryList?categoryId='+index">{{item.name}}</router-link>
+              
           </li>
         </ul>
       </div>
@@ -55,6 +56,8 @@
       goTo (index,path) {
         this.currentIndex = index
         this.$router.push(path)
+        // console.log(this.$route.params)
+        // console.log(this.$route.query)
       }
     },
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- 移动端适配 -->
     <meta name="viewport" content="width=device-width,initial-scale=0.5,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
-    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="/css/reset.css">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1356964_akv08wa94jo.css">
     <title>my-wangyi-vue</title>
@@ -18,12 +18,12 @@
       if ('addEventListener' in document) {
         document.addEventListener('DOMContentLoaded', function() {
           FastClick.attach(document.body);
-        }, false);
+        },false);
       }
       //取消浏览器默认行为
       document.addEventListener('touchstart',function(event){
         event.preventDefault();
-      }, false)
+      }, {passive:false})
       //解决点击穿透
       !(function () {
         let aNodes = document.querySelectorAll('a');

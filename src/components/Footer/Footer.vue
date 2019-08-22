@@ -14,7 +14,7 @@
         <span>分类</span>
       </div>
     </li>
-    <li :class="{active: $route.path === '/seeGoods'}" @click="goto('/seeGoods')">
+    <li :class="{active: $route.path.indexOf('/seeGoods')=== 0}" @click="goto('/seeGoods')">
       <div class="footer-icon">
         <i class="iconfont icon-shiwu"></i>
         <!-- <img src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/tabBar-s43a0dc8a7d-de25ef8e19.png" alt="icon"> -->
@@ -62,6 +62,7 @@
     width 100%
     font-size 24px
     background-color #fff
+    z-index 10
     li
       position relative
       display flex

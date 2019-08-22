@@ -60,7 +60,7 @@ export default [
     },
     children: [
       {
-        path: '/seeGoods/findGoods',
+        path: '/seeGoods/findGoods/:id',
         component: FindGoods,
         meta: {
           showFooter: true
@@ -72,7 +72,14 @@ export default [
         meta: {
           showFooter: true
         },
-      }
+      },
+      {
+        path: '/seeGoods',
+        redirect: '/seeGoods/findGoods/0',
+        meta: {
+          showFooter: true
+        },
+      },
     ]
   },
   {

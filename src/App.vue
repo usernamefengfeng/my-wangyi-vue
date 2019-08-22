@@ -29,5 +29,4 @@ import Profile from './pages/Profile/Profile'
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   .appContainer
     width 100%
-    height 100%
 </style>
