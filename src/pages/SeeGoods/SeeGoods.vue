@@ -52,6 +52,7 @@ export default {
         position fixed
         box-sizing border-box
         border-bottom .5px solid #ccc
+        z-index 10
         .hearder-title
           height 50px
           max-width 768px

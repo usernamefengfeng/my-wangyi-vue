@@ -13,8 +13,8 @@
         <ul>
           <li class="nav-item" v-for="(item, index) in categorysData.categoryL1List" :key="index"
               @click="goTo(index,'/categoryList?categoryId='+index)">
-              <router-link :class="{active:currentIndex === index}" :to="'/categoryList?categoryId='+index">{{item.name}}</router-link>
-              
+              <!-- <router-link :class="{active:currentIndex === index}" :to="'/categoryList?categoryId='+index">{{item.name}}</router-link> -->
+              <span :class="{active:currentIndex === index}">{{item.name}}</span>
           </li>
         </ul>
       </div>
@@ -126,7 +126,7 @@
             height 25px
             text-align center
             padding 10px 0
-            a
+            span 
               white-space: nowrap
               font-size: 14px
               text-overflow: ellipsis
@@ -135,6 +135,8 @@
               color #333
               &.active
                 color #B4282D
+                font-weight bold
+                font-size 16px
       .right-content
         width 375px
         height 574px
