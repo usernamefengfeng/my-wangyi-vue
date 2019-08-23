@@ -24,8 +24,8 @@
 </template>
 
 <script type="text/ecmascript-6">
-import FindGoods from './pages/FindGoods/FindGoods'
-import ZhenXuan from './pages/ZhenXuan/ZhenXuan'
+// import FindGoods from './pages/FindGoods/FindGoods'
+// import ZhenXuan from './pages/ZhenXuan/ZhenXuan'
 export default {
   data() {
     return {
@@ -33,10 +33,10 @@ export default {
     }
   },
 
-  components: {
-    FindGoods,
-    ZhenXuan
-  }
+  // components: {
+  //   FindGoods,
+  //   ZhenXuan
+  // }
 };
 </script>
 

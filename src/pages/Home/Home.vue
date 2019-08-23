@@ -1,7 +1,7 @@
 <template>
   <div class="home-container">
     <HeaderTitle/>
-    <div class="home-main">
+    <div class="home-main" ref="HomeMain">
       <div class="home-content" style="padding-top: 74px">
         <SwiperImg/>    <!--轮播图-->
         <div class="servicePolicy">
@@ -54,6 +54,7 @@
   import HomeFooter from './components/HomeFooter/HomeFooter'  //home底部
 
   import {mapState} from 'vuex'
+  import Bscroll from 'better-scroll'
   export default {
     components: {
       HeaderTitle,
@@ -78,8 +79,33 @@
       })
     },
 
+    // watch: {
+    //   deep: true,
+    //   homeData: function (newValue) {
+    //     this.$nextTick(() => {
+    //       if (!this.scroll) {
+    //         this.scroll = new Bscroll(this.$refs.HomeMain,{
+    //           click: true,
+    //           scrollY: true
+    //         })
+    //       } else {
+    //         this.scroll.refresh()
+    //       }
+    //     })
+    //   }
+    // },
+
     mounted() {
-      
+      this.$nextTick(() => {
+        if (!this.scroll) {
+          this.scroll = new Bscroll(this.$refs.HomeMain,{
+            click: true,
+            scrollY: true
+          })
+        } else {
+          this.scroll.refresh()
+        }
+      })
     },
   }
 </script>
@@ -88,6 +114,8 @@
   .home-container
     padding-bottom 47px
     .home-main
+      width 100%
+      height 620px
       .home-content
         .servicePolicy
           background-color #FFFFFF

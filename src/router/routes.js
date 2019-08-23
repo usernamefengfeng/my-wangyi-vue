@@ -45,13 +45,13 @@ export default [
       showFooter: true
     }
   },
-  {
-    path: '/categoryList/:categoryId',
-    component: CategoryList,
-    meta: {
-      showFooter: true
-    }
-  },
+  // {
+  //   path: '/categoryList/:categoryId',
+  //   component: CategoryList,
+  //   meta: {
+  //     showFooter: true
+  //   }
+  // },
   {
     path: '/seeGoods',
     component: SeeGoods,

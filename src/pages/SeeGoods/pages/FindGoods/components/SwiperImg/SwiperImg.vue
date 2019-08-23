@@ -1,5 +1,5 @@
 <template>
-  <div class="content-one">
+  <div class="max-content">
     <div class="content-img">
       <div class="img-one">
         <img v-lazy="'https://yanxuan.nosdn.127.net/15639572098632760.jpeg'" alt="识物">
@@ -50,6 +50,10 @@
           'https://yanxuan.nosdn.127.net/15639572098632760.jpeg',
           'https://yanxuan.nosdn.127.net/15639572098632760.jpeg',
           'https://yanxuan.nosdn.127.net/15639572098632760.jpeg',
+          'https://yanxuan.nosdn.127.net/15639572098632760.jpeg',
+          'https://yanxuan.nosdn.127.net/15639572098632760.jpeg',
+          'https://yanxuan.nosdn.127.net/15639572098632760.jpeg',
+          'https://yanxuan.nosdn.127.net/15639572098632760.jpeg',
         ]
       }
     },
@@ -85,10 +89,10 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
-  .content-one
+  .max-content
     width 100%
-    //box-sizing border-box
-    padding-bottom 47px
+    padding-top 87px
+    box-sizing border-box
     .content-img
       width 100%
       .img-one

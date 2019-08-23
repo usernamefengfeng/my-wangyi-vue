@@ -11,11 +11,9 @@
       </ul>
     </div>
     <div class="min-container" ref="minContainer">
-      <div class="max-content">
-        <!-- <SwiperImg/> -->
-        <SwiperImg v-if="this.currentIndex===0"/>
-        <CategoryOne v-if="this.currentIndex===1"/>
-      </div>
+      <!-- <SwiperImg/> -->
+      <SwiperImg v-if="this.currentIndex===0"/>
+      <CategoryOne v-if="this.currentIndex===1"/>
     </div>
   </div>
 </template>
@@ -83,6 +81,7 @@
   .findGoods
     width 100%
     box-sizing border-box
+    // padding-bottom 87px
     .header-tab
       width 100%
       height 36px
@@ -116,7 +115,6 @@
             border-bottom 2px solid #B4282D
     .min-container
       width 100%
-      height 100%
+      height 620px
       box-sizing border-box
-      padding-top 87px
 </style>
